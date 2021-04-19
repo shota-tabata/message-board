@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Message;    //追加(Modelの一覧取得のために名前空間を変更)
+
 class MessagesController extends Controller
 {
     /**
@@ -14,7 +16,13 @@ class MessagesController extends Controller
      //getでmessages/にアクセスされた場合の「一覧表示処理」
     public function index()
     {
-        //
+        // メッセージ一覧を取得
+        $messages = Message::all();
+
+        // メッセージ一覧ビューでそれを表示
+        return view('messages.index', [
+            'messages' => $messages,
+            ]);
     }
 
     /**
