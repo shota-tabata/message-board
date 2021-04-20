@@ -105,7 +105,14 @@ class MessagesController extends Controller
      //putまたはpatchでmessages/(任意のid)にアクセスされた場合の「更新処理」
     public function update(Request $request, $id)
     {
-        //
+        //idの値でメッセージを検索して取得
+        $message = Message::findOrFail($id);
+        //メッセージを更新
+        $message->content = $request->content;
+        $message->save('/');
+        
+        //トップページへリダイレクトさせる
+        return redirect('/');
     }
 
     /**
