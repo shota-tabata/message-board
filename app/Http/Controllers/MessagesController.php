@@ -34,10 +34,11 @@ class MessagesController extends Controller
     public function create()
     {
         $message = new Message;
-        //メッセージ作成ビューを表示
+
+        // メッセージ作成ビューを表示
         return view('messages.create', [
             'message' => $message,
-            ]);
+        ]);
     }
 
     /**
@@ -67,7 +68,13 @@ class MessagesController extends Controller
      //getでmessages/(任意のid)にアクセスされた場合の「取得表示処理」
     public function show($id)
     {
-        //
+        //idの値でメッセージを検索して取得
+        $message = Message::findOrFail($id);
+        
+        //メッセージ詳細ビューでそれを表示
+        return view('messages.show', [
+            'message' => $message,
+            ]);
     }
 
     /**
@@ -79,7 +86,13 @@ class MessagesController extends Controller
      //getでmesssages/(任意のid)/editにアクセスされた場合の「更新画面表示処理」
     public function edit($id)
     {
-        //
+        //idの値でメッセージを検索して取得
+        $message = Message::findOrFail($id);
+        
+        //メッセージ編集ビューでそれを表示
+        return view('messages.edit', [
+            'message' => $message,
+            ]);
     }
 
     /**
