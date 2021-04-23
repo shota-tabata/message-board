@@ -11,13 +11,13 @@ class MessagesTableSeeder extends Seeder
      */
     public function run()
     {
-         for($i = 1; $i <= 100; $i++) {
+         for($i = 1; $i <= 50; $i++) {
             DB::table('messages')->insert([
                 'title' => 'test title ' . $i,
                 'content' => 'test content ' . $i
             ]);
         }
-        /*
+        /*1件ずつ表示させる方法
         DB::table('messages')->insert([
             'title' => 'test title 1',
             'content' => 'test content 1'
