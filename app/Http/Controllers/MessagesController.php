@@ -133,7 +133,9 @@ class MessagesController extends Controller
         $message->title = $request->title;
         $message->content = $request->content;
         
+        /*
         dd($message); //デバッグ
+        */
         
         $message->save();
 
