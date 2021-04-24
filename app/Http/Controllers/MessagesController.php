@@ -120,6 +120,7 @@ class MessagesController extends Controller
      //putまたはpatchでmessages/(任意のid)にアクセスされた場合の「更新処理」
     public function update(Request $request, $id)
     {
+        
         //バリテーション
         $request->validate([
             'title' => 'required|max:255',
@@ -131,6 +132,9 @@ class MessagesController extends Controller
         // メッセージを更新
         $message->title = $request->title;
         $message->content = $request->content;
+        
+        dd($message); //デバッグ
+        
         $message->save();
 
         // トップページへリダイレクトさせる
